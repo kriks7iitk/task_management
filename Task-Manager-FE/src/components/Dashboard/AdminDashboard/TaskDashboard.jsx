@@ -10,6 +10,9 @@ function TaskDashboard() {
         submittedTasks: 0,
         tasks: [],
       });
+
+
+      const [userData , setUserData] = useState(null)
     
       const animatedTotalTasks = useSpring({
         value: dashboardData.totalTasks,
@@ -26,6 +29,15 @@ function TaskDashboard() {
     
       useEffect(() => {
         const fetchData = async () => {
+          try {
+            const response = await AxiosService.get("/task/tasks");
+            setDashboardData(response.data);
+          } catch (error) {
+            console.error("Error fetching dashboard data:", error);
+          }
+        };
+
+        const fetchUserData = async () => {
           try {
             const response = await AxiosService.get("/task/tasks");
             setDashboardData(response.data);

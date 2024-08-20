@@ -27,7 +27,7 @@ function UserTaskDashboard() {
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await AxiosService.get("/task/users");
+            const response = await AxiosService.get("/task/user");
             const taskData = response.data;
             console.log(response.data);
     
@@ -61,7 +61,10 @@ function UserTaskDashboard() {
       Math.round(
         (dashboardData.submittedTasks / dashboardData.totalTasks) * 100
       ) || 0;
-
+      
+      const userData = sessionStorage.getItem("userData");
+      const parsedUserData = JSON.parse(userData);
+      console.log(parsedUserData);
   return (
     <div style={{ width: "auto", height: "auto", alignItems: "center" }}>
       
@@ -104,6 +107,16 @@ function UserTaskDashboard() {
         />
       </Card.Body>
     </Card>
+
+    <Card className={`${styles.card} ${styles.successCard}`}>
+      <Card.Body>
+        <Card.Title>Total Points</Card.Title>
+        <animated.span className={styles.propertyValue}>
+          {parsedUserData.points}
+        </animated.span>ß
+      </Card.Body>
+    </Card>
+
   </div>
   )
 }

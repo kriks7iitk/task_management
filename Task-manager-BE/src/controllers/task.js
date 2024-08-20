@@ -84,6 +84,26 @@ const createTask = async (req, res) => {
 
     
         const task = await taskModel.findById(taskId);
+        console.log("wopokring till here ");
+        console.log(task.assignedTo);
+        const user = await userModel.findById(task.assignedTo);;
+    if (!user) {
+      throw new Error('User not found');
+    }
+    
+    const now = new Date(); // Current date and time
+    const dueDate = new Date(task.dueDateTime); // Task's due date
+
+    if (now <= dueDate) {
+      // Task completed on or before the due date
+      user.points += 1; // Add one point
+    } else {
+      // Task completed after the due date
+      user.points -= 0.5; // Deduct 0.5 point
+    }
+
+    // Save the updated user document
+    await user.save();
 
         if (!task) {
             return res.status(404).json({ message: 'Task not found' });

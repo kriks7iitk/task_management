@@ -54,7 +54,7 @@ const adminGaurd = async(req,res,next)=>{
     if(token)
     {
         let payload = await decodeToken(token)
-        if(payload.role==='customer')
+        if(payload.role!=='customer')
             next()
         else
             res.status(401).send({message:"Only Customers are allowed"})

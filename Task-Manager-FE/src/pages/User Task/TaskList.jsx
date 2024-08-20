@@ -32,7 +32,7 @@ const TaskList = () => {
       setLoading(true); // Set loading to true before the API call
 
       // Replace 'YOUR_API_ENDPOINT' with the actual endpoint for fetching tasks
-      const response = await AxiosService.get("/task/users", {
+      const response = await AxiosService.get("/task/user", {
         params: {
           sort: sortBy,
           order: sortOrder,

@@ -41,7 +41,7 @@ const Home = () => {
     };
 
     getdata();
-  }, [logout]);
+  }, []);
 
   const deleteuser = async (id) => {
     try {
@@ -136,6 +136,7 @@ const Home = () => {
                   <th>Role</th>
                   <th>Status</th>
                   <th>Number</th>
+                  <th>Points</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -156,6 +157,7 @@ const Home = () => {
                       {user.status}
                     </td>
                     <td>{user.mobile}</td>
+                    <th>{user.points}</th>
                     <td className="d-flex justify-content-between">
                       <NavLink to={`/view/${user._id}`}>
                         {" "}

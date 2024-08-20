@@ -4,13 +4,13 @@ import auth from '../common/auth.js'
 
 
 const router = express.Router()
-
+router.get('/user',auth.validate,taskController.getTaskById)
 router.post('/create',auth.validate,auth.adminGaurd,taskController.createTask)
-router.get('/users',auth.validate,taskController.getTaskById)
+
 router.put('/submit/:taskId',auth.validate,taskController.submitTask)
 router.get('/taskID/:taskId',auth.validate,taskController.getTaskbyTaskId)
 
-router.get('/tasks/status',auth.validate,auth.adminGaurd,taskController.getTasksByStatus)
+router.get('/tasks/status',auth.validate,taskController.getTasksByStatus)
 router.get('/tasks',auth.validate,auth.adminGaurd,taskController.getAllTask)
 router.put('/edit/:taskId',auth.validate,auth.adminGaurd,taskController.editTask)
 router.delete('/delete/:taskId',auth.validate,auth.adminGaurd,taskController.deleteTask)

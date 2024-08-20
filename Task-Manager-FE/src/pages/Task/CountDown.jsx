@@ -28,15 +28,15 @@ const Countdown = ({ dueTime }) => {
 
       let formattedTime = '';
 
-      if (totalMonths > 0) {
+      if (totalMonths >= 1) {
         formattedTime = `${totalMonths} month${totalMonths > 1 ? 's' : ''}`;
-      } else if (totalWeeks > 0) {
+      } else if (totalWeeks >= 1) {
         formattedTime = `${totalWeeks} week${totalWeeks > 1 ? 's' : ''}`;
-      } else if (totalDays > 0) {
+      } else if (totalDays >= 1) {
         formattedTime = `${totalDays} day${totalDays > 1 ? 's' : ''}`;
-      } else if (totalHours > 0) {
+      } else if (totalHours >= 1) {
         formattedTime = `${totalHours} hour${totalHours > 1 ? 's' : ''}`;
-      } else if (totalMinutes > 0) {
+      } else if (totalMinutes >= 1) {
         formattedTime = `${totalMinutes} minute${totalMinutes > 1 ? 's' : ''}`;
       } else {
         formattedTime = `${totalSeconds} second${totalSeconds > 1 ? 's' : ''}`;

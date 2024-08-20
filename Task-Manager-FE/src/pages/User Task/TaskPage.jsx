@@ -35,7 +35,7 @@ import {
 
   const fetchTasks = async () => {
     try {
-      const response = await AxiosService.get("/task/users");
+      const response = await AxiosService.get("/task/user");
       setTasks(response.data);
       setLoading(false); // Set loading to false when data is fetched
     } catch (error) {

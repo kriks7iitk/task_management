@@ -47,6 +47,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    points: {
+        type: Number,
+        default: 0, // Default value if no points are provided
+      },
+    
 
     datecreated:Date,
     dateUpdated:Date
